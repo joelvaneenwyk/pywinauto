@@ -3,6 +3,8 @@
 #
 
 sphinx_build_log.txt
+docs/code/
+previousReleases/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
