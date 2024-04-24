@@ -2,7 +2,7 @@
 
 set -eax
 
-sudo /usr/bin/Xvfb "${DISPLAY:-0}" -screen 0 1280x1024x24 &
+sudo /usr/bin/Xvfb "${DISPLAY:-":0"}" -screen 0 1280x1024x24 &
 sleep 5
 
 set +eE
