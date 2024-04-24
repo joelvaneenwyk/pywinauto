@@ -1,0 +1,4 @@
+[submodule "pywinauto-tests"]
+	path = apps
+	url = https://github.com/joelvaneenwyk/pywinauto-tests.git
+	branch = develop
