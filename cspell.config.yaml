@@ -1,0 +1,11 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+  - name: pywinauto
+    path: ./.github/cspell-pywinauto.txt
+    addWords: true
+dictionaries:
+  - pywinauto
+words: []
+ignoreWords: []
+import: []
