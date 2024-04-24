@@ -1,3 +1,5 @@
+# `pywinauto`
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UGXPL6AD29PHW)
 [![Join the chat at https://gitter.im/pywinauto/pywinauto](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pywinauto/pywinauto?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Documentation Status](https://readthedocs.org/projects/pywinauto/badge/?version=latest)](http://pywinauto.readthedocs.org/en/latest/?badge=latest)
@@ -8,8 +10,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b823b31c0f2b48d6873326d038c5a516)](https://www.codacy.com/app/pywinauto/pywinauto?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pywinauto/pywinauto&amp;utm_campaign=Badge_Grade)
 [![Code Quality: Python](https://img.shields.io/lgtm/grade/python/g/pywinauto/pywinauto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pywinauto/pywinauto/context:python)
 [![Total Alerts](https://img.shields.io/lgtm/alerts/g/pywinauto/pywinauto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pywinauto/pywinauto/alerts)
-
-# `pywinauto`
 
 `pywinauto` is a set of python modules to automate the Microsoft Windows GUI.
 At its simplest it allows you to send mouse and keyboard actions to windows
