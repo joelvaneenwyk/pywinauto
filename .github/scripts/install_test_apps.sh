@@ -1,23 +1,19 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
 
 set -eax
 
-git init apps
-cd apps
-git remote add -f origin https://github.com/pywinauto/PywinautoTestapps/
-git config core.sparseCheckout true
-echo "MouseTester/source" >>.git/info/sparse-checkout
-echo "SendKeysTester/source" >>.git/info/sparse-checkout
-git pull origin master
-cd MouseTester/source
+REPO_ROOT="$(cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")" &>/dev/null && cd ../../ && pwd)"
+
+cd "$REPO_ROOT/apps/MouseTester/source"
 qmake
 make
 chmod a+x mousebuttons
-cp mousebuttons ../
-cd ../..
-cd SendKeysTester/source
+cp mousebuttons "$REPO_ROOT/apps/MouseTester"
+
+cd "$REPO_ROOT/apps/SendKeysTester/source"
 qmake
 make
 chmod a+x send_keys_test_app
-cp send_keys_test_app ../
+cp send_keys_test_app "$REPO_ROOT/apps/SendKeysTester"
+
 export XDG_RUNTIME_DIR=/tmp/runtime-runner
