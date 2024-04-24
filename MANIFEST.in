@@ -1,4 +1,3 @@
-include Readme.txt
 include docs\*.txt
 include LICENSE
 include setup.cfg
