@@ -2,6 +2,8 @@
 # pywinauto
 #
 
+apps/
+.venv/
 sphinx_build_log.txt
 docs/code/
 previousReleases/
