@@ -1,1 +1,0 @@
-This folder contains test applications (mostly binaries) which are used for unit testing.
