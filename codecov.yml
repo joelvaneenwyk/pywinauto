@@ -1,13 +1,18 @@
+#
+# CodeCoverage.io - Configuration File
+#
+
 codecov:
   notify:
     require_ci_to_pass: no
-coverage:
-  precision: 1
+
 comment:
   layout: header, changes, diff
+
 coverage:
+  precision: 1
   ignore:
-  - pywinauto/unittests/.*
-  - examples/.*
+    - pywinauto/unittests/.*
+    - examples/.*
   status:
     patch: false
