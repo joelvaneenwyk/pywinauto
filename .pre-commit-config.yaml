@@ -1,0 +1,31 @@
+default_stages:
+  - pre-commit
+
+exclude: |
+  (?x)^(
+    (\.[\da-zA-Z\/\\\-]*)\..*|
+    .*(Makefile|\.(json|canvas|js|iml|excalidraw|svg|pq|xml|kql|list))|
+    (Attachments|.*Source).*
+  )$
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: check-ast
+      - id: debug-statements
+      - id: check-docstring-first
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.4.2
+    hooks:
+      # Run the linter.
+      - id: ruff
+      # Run the formatter.
+      - id: ruff-format
