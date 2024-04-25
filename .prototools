@@ -1,1 +1,4 @@
 python = "3.11.8"
+
+[plugins]
+act = "source:https://raw.githubusercontent.com/theomessin/proto-toml-plugins/master/act.toml"
