@@ -1,11 +1,8 @@
 dist: xenial
-language: cpp
+language: python
 notifications:
   email: false
-services:
-  xvfb
-
-language: python
+services: xvfb
 
 python:
   - "2.7"
@@ -30,7 +27,7 @@ install:
   - sudo apt-get install -y python3-gi
   - sudo apt-get install --reinstall libgl1-mesa-dev
   - source /opt/qt58/bin/qt58-env.sh;
-  
+
 before_script:
   - xauth generate :99.0 . trusted
   # Clone test apps
