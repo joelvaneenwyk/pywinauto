@@ -89,4 +89,4 @@ jobs:
           coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_controls.py
 
       - name: Upload Coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
