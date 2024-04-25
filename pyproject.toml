@@ -1,0 +1,20 @@
+[project]
+name = "pywinauto"
+version = "0.6.8"
+description = "Windows GUI Automation with Python"
+
+[tool.coverage.run]
+source = ["pywinauto/"]
+omit = [
+    "*/.venv/*",
+    "*/.vscode/*",
+    "*/build/*",
+    "*/previousReleases/*",
+    "*/.git/*",
+    # omit anything in a .local directory anywhere
+    "*/.local/*",
+    # omit everything in /usr
+    "/usr/*",
+    # omit this single file
+    "utils/tirefire.py",
+]
