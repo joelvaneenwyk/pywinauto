@@ -51,10 +51,8 @@ jobs:
       - name: Python Packages
         run: |
           python -m pip install --upgrade pip
-          python -m pip install \
-            coverage codecov pytest scikit-build cmake==3.22.6
-          python -m pip install --upgrade \
-            mock python-xlib
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-dev.txt
 
       - name: Generate Test Apps
         run: |
@@ -81,13 +79,14 @@ jobs:
           sleep 5
 
       - name: Run Tests
-        run: >-
-          coverage run -m pytest
-            pywinauto/unittests/test_atspi_element_info.py
-            pywinauto/unittests/test_atspi_wrapper.py
-            pywinauto/unittests/test_atspi_controls.py
-            pywinauto/unittests/test_clipboard_linux.py
-            pywinauto/unittests/test_keyboard.py pywinauto/unittests/test_application_linux.py
+        run: |
+          coverage run -a --include=pywinauto/mouse.py pywinauto/unittests/test_mouse.py
+          coverage run -a --include=pywinauto/linux/keyboard.py pywinauto/unittests/test_keyboard.py
+          coverage run -a --include=pywinauto/linux/clipboard.py pywinauto/unittests/test_clipboard_linux.py
+          coverage run -a --include=pywinauto/linux/application.py pywinauto/unittests/test_application_linux.py
+          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_element_info.py
+          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_wrapper.py
+          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_controls.py
 
       - name: Upload Coverage to Codecov
         uses: codecov/codecov-action@v3
