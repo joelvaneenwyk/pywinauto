@@ -35,15 +35,15 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt install -y --no-install-recommends \
-            python-setuptools tk-dev python-tk python3-setuptools \
-            xsel libjavascriptcoregtk-4.0-18
+            python-setuptools python3-pyatspi python3-setuptools \
+            python-tk tk-dev \
+            xsel libjavascriptcoregtk-4.0-18 \
             build-essential libssl-dev \
             qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
             libxkbcommon-x11-0 \
             python3-gi gobject-introspection gir1.2-gtk-3.0 \
             at-spi2-core \
             gdm3 \
-            python3-pyatspi \
             xvfb x11-utils libxkbcommon-x11-0 \
             libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 \
             libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 xdotool
