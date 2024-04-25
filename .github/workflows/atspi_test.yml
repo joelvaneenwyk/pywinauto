@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python: ["3.11"]  # "2.7", "3.7", "3.8", "3.9", "3.10"
+        python: ["3.11"] # "2.7", "3.7", "3.8", "3.9", "3.10"
 
     env:
       DISPLAY: ":0"
@@ -29,29 +29,32 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+          cache: "pip" # caching pip dependencies
 
-      - name: Install Dependencies
+      - name: System Dependencies
         run: |
-          python -m pip install --upgrade pip
           sudo apt update -y
           sudo apt install -y --no-install-recommends \
-            python-setuptools tk-dev python-tk \
-            python3 python3-pip python3-setuptools
-          sudo apt install -y --no-install-recommends \
+            python-setuptools tk-dev python-tk python3-setuptools \
             xsel libjavascriptcoregtk-4.0-18
-          python -m pip install coverage codecov pytest
-          python -m pip install mock python-xlib --upgrade
-          sudo apt install -y --no-install-recommends build-essential libssl-dev
-          sudo apt install -y --no-install-recommends qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
-          sudo apt install -y --no-install-recommends libxkbcommon-x11-0
-          sudo apt install -y --no-install-recommends python3-gi gobject-introspection gir1.2-gtk-3.0
-          sudo apt install -y --no-install-recommends at-spi2-core
-          sudo apt install -y --no-install-recommends python3-pyatspi
-          sudo apt install -y --no-install-recommends xvfb x11-utils libxkbcommon-x11-0 \
-              libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 \
-              libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 xdotool
-          python -m pip install scikit-build # required for cmake>=3.23.0
-          python -m pip install cmake==3.22.6
+            build-essential libssl-dev \
+            qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools \
+            libxkbcommon-x11-0 \
+            python3-gi gobject-introspection gir1.2-gtk-3.0 \
+            at-spi2-core \
+            gdm3 \
+            python3-pyatspi \
+            xvfb x11-utils libxkbcommon-x11-0 \
+            libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 \
+            libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 xdotool
+
+      - name: Python Packages
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install \
+            coverage codecov pytest scikit-build cmake==3.22.6
+          python -m pip install --upgrade \
+            mock python-xlib
 
       - name: Generate Test Apps
         run: |
@@ -74,7 +77,6 @@ jobs:
           sudo /usr/bin/Xvfb $DISPLAY -screen 0 1280x1024x24 &
           sleep 5
           set +eE
-          sudo apt install -y gdm3
           sudo service gdm start
           sleep 5
 
