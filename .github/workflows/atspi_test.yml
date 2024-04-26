@@ -51,8 +51,7 @@ jobs:
       - name: Python Packages
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
-          python -m pip install -r requirements-dev.txt
+          python -m pip install .[dev]
 
       - name: Generate Test Apps
         run: |

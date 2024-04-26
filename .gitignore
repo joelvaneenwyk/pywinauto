@@ -2,6 +2,8 @@
 # pywinauto
 #
 
+*.lock
+
 .venv/
 sphinx_build_log.txt
 docs/code/
@@ -14,6 +16,7 @@ previousReleases/
 /Lib/
 /src/
 /tests/
+/TestResultsReport/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

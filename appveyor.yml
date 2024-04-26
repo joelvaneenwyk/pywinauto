@@ -6,12 +6,10 @@
 #
 
 # fetch repository as a zip archive
-shallow_clone: true                 # default is "false"
+shallow_clone: true # default is "false"
 
 environment:
-
   matrix:
-
     - PYTHON: "C:\\Python27"
       PYTHON_VERSION: "2.7"
       PYTHON_ARCH: "32"
@@ -58,8 +56,8 @@ environment:
       UIA_SUPPORT: "YES"
 
 #init:
-  # Enable RDP.
-  #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+# Enable RDP.
+#- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
   # Some listings for debug only
@@ -77,17 +75,16 @@ install:
   # compiled extensions and are not provided as pre-built wheel packages,
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
-  - "%CMD_IN_ENV% pip install -r requirements-dev.txt"
+  - "%CMD_IN_ENV% pip install .[dev]"
 
   # Enable desktop (for correct screenshots).
   #- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-desktop.ps1'))
 
-build: false  # Not a C# project, build stuff at the test step instead.
+build: false # Not a C# project, build stuff at the test step instead.
 
 test_script:
   # run the tests
   - "powershell ./ci/runTestsuite.ps1"
-
 
 after_test:
   # Generate coverage report on codecov.io (token is not required for AppVeyor)
@@ -98,12 +95,11 @@ after_test:
 artifacts:
   # Archive the generated coverage report in the ci.appveyor.com build report.
   - path: Coverage_report
-
 #on_success:
 #  - TODO:
 #
 
 #on_failure:
-  # Collect screenshots.
-  #- "7z a screenshots.zip %APPVEYOR_BUILD_FOLDER%\\scr-*.jpg"
-  #- "appveyor PushArtifact screenshots.zip"
+# Collect screenshots.
+#- "7z a screenshots.zip %APPVEYOR_BUILD_FOLDER%\\scr-*.jpg"
+#- "appveyor PushArtifact screenshots.zip"
