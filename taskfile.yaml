@@ -1,0 +1,22 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  init:
+    cmds:
+      - cmd: echo "hello" # set "PATH=%USERPROFILE%\AppData\Roaming\pdm\venv\Scripts;%PATH%"
+      - cmd: echo "hello" # set PDM_IGNORE_ACTIVE_VENV=1
+      - cmd: echo "hello" # call "%USERPROFILE%\AppData\Roaming\pdm\venv\Scripts\activate.bat"
+      - cmd: echo "hello" # pip3 install setuptools
+      - cmd: echo "hello" # pdm add setuptools
+      - cmd: echo "hello" # pdm init
+      - cmd: echo "hello" # pdm import setup.py
