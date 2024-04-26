@@ -41,6 +41,7 @@ Edouard
 endlocal
 epub
 errorlevel
+excalidraw
 gettext
 Girish
 gobject

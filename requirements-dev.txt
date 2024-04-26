@@ -1,18 +1,18 @@
-Sphinx
-six
-scikit-build
-rst2pdf
-pywin32; python_version > '3.6' and sys_platform == "win32"
-python-xlib
+cmake>=3.22.6
+codacy-coverage
+codecov
+coverage
+mock
+nose
+pillow>=6.2.0
+PyQt5; python_version > '3.6'
 pytest
 pytest-cov
 pytest-xdist
-PyQt5; python_version > '3.6'
-pillow>=6.2.0
-nose
-mock
-coverage
-codecov
-codacy-coverage
-cmake>=3.22.6
+python-xlib
+pywin32; python_version > '3.6' and sys_platform == "win32"
+rst2pdf
 ruff
+scikit-build
+six
+Sphinx
