@@ -1,4 +1,6 @@
-# GUI Application automation and testing library
+#
+# `pywinauto` : GUI Application automation and testing library
+#
 # Copyright (C) 2006-2018 Mark Mc Mahon and Contributors
 # https://github.com/pywinauto/pywinauto/graphs/contributors
 # http://pywinauto.readthedocs.io/en/latest/credits.html
@@ -28,6 +30,7 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
 
 [project]
 name = "pywinauto"
@@ -37,7 +40,7 @@ description = "A set of Python modules to automate the Microsoft Windows GUI"
 # At it's simplest it allows you to send mouse and keyboard
 # actions to windows dialogs and controls, but It has support for more complex
 # controls also.
-# 
+#
 # Useful links
 # -------------
 # - Home page: http://pywinauto.github.io/
@@ -50,9 +53,9 @@ authors = [
     { name = "Joel Van Eenwyk", email = "joel.vaneenwyk@gmail.com" },
 ]
 dependencies = [
-    'comtypes; sys_platform == "win32"',
-    'pywin32; sys_platform == "win32"',
-    'python-xlib; sys_platform != "win32"',
+    'comtypes; platform_system == "Windows"',
+    'pywin32; platform_system == "Windows"',
+    'python-xlib; platform_system != "Windows"',
     "six",
 ]
 # packages = [
@@ -61,7 +64,7 @@ dependencies = [
 #     "pywinauto.controls",
 #     "pywinauto.windows",
 # ]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 readme = "README.md"
 license = { text = "BSD 3-clause" }
 keywords = [
@@ -94,8 +97,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "http://pywinauto.github.io/"
-Source = "https://github.com/pywinauto/pywinauto"
+Homepage = "https://joelvaneenwyk.github.io/pywinauto"
+Source = "https://github.com/joelvaneenwyk/pywinauto"
 
 [build-system]
 requires = ["setuptools>=61.2"]

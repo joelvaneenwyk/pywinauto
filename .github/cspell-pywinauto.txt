@@ -84,6 +84,7 @@ pseudoxml
 pyatspi
 pycache
 pyproject
+pyvenv
 pywin
 pywinauto
 qcollectiongenerator
@@ -114,6 +115,7 @@ Tongzhe
 undoc
 unittests
 unselectcheck
+USERPROFILE
 Valiulin
 Vladic
 webclient

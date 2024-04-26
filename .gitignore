@@ -9,8 +9,12 @@ previousReleases/
 .pdm-python
 /test.bat
 /setup.bat
-/Scripts/*.exe
+/Scripts/
 /pyvenv.cfg
+/Lib/
+/src/
+/tests/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

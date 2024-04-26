@@ -3,13 +3,14 @@
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UGXPL6AD29PHW)
 [![Join the chat at https://gitter.im/pywinauto/pywinauto](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pywinauto/pywinauto?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Documentation Status](https://readthedocs.org/projects/pywinauto/badge/?version=latest)](http://pywinauto.readthedocs.org/en/latest/?badge=latest)
+
 [![Windows Tests](https://ci.appveyor.com/api/projects/status/ykk30v7vcvkmpnoq/branch/master?svg=true&passingText=Windows%20tests%20-%20OK&pendingText=Windows%20tests%20-%20running&failingText=Windows%20tests%20-%20fail)](https://ci.appveyor.com/project/pywinauto/pywinauto)
 [![Linux Tests](https://travis-ci.org/pywinauto/pywinauto.svg?branch=master)](https://travis-ci.org/pywinauto/pywinauto)
+
 [![codecov.io](http://codecov.io/github/pywinauto/pywinauto/coverage.svg?branch=master)](http://codecov.io/github/pywinauto/pywinauto?branch=master)
-[![Code Health](https://landscape.io/github/pywinauto/pywinauto/master/landscape.svg?style=flat)](https://landscape.io/github/pywinauto/pywinauto/master)
+
+[![Code Health](https://landscape.io/github/joelvaneenwyk/pywinauto/develop/landscape.svg?style=flat)](https://landscape.io/github/joelvaneenwyk/pywinauto/develop)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b823b31c0f2b48d6873326d038c5a516)](https://www.codacy.com/app/pywinauto/pywinauto?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pywinauto/pywinauto&amp;utm_campaign=Badge_Grade)
-[![Code Quality: Python](https://img.shields.io/lgtm/grade/python/g/pywinauto/pywinauto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pywinauto/pywinauto/context:python)
-[![Total Alerts](https://img.shields.io/lgtm/alerts/g/pywinauto/pywinauto.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/pywinauto/pywinauto/alerts)
 
 `pywinauto` is a set of python modules to automate the Microsoft Windows GUI.
 At its simplest it allows you to send mouse and keyboard actions to windows
@@ -30,7 +31,7 @@ Your help is valuable since this is a hobby project for all of us: we do
 
 * In general the library **tends to be cross-platform** in the near future (Linux in 2018, macOS in 2019).
 * Reliable text based **"record-replay"** generator is also a high priority feature under development.
-* More feature requests and discusions are welcome in [the issues](https://github.com/pywinauto/pywinauto/issues).
+* More feature requests and discussions are welcome in [the issues](https://github.com/pywinauto/pywinauto/issues).
 
 ## Setup
 
@@ -91,9 +92,10 @@ Properties.wait_not('visible') # make sure the dialog is closed
   * [python-xlib](https://github.com/python-xlib/python-xlib)
   * [six](https://pypi.python.org/pypi/six)
 * Optional packages:
-  * Install [Pillow](https://pypi.python.org/pypi/Pillow) (by `pip install -U Pillow`) to be able to call `capture_as_image()` method for making a control's snapshot.
+  * [Pillow](https://pypi.python.org/pypi/Pillow) - `pip install -U Pillow` - enables `capture_as_image()` method 
+    for making a control's snapshot.
 
-## Packages required for running unit tests
+## Packages Required for Unit Tests
 
 * [Pillow](https://pypi.python.org/pypi/Pillow)
 * [coverage](https://pypi.python.org/pypi/coverage)
