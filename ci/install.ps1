@@ -57,12 +57,13 @@ function InstallMiniconda ($python_version, $architecture, $python_home) {
     $filepath = DownloadMiniconda $python_version $platform_suffix
     Write-Host "Installing" $filepath "to" $python_home
     $install_log = $python_home + ".log"
-    $args = "/S /D=$python_home"
-    Write-Host $filepath $args
-    Start-Process -FilePath $filepath -ArgumentList $args -Wait -Passthru
+    $input_args = "/S /D=$python_home"
+    Write-Host $filepath $input_args
+    Start-Process -FilePath $filepath -ArgumentList $input_args -Wait -PassThru
     if (Test-Path $python_home) {
         Write-Host "Python $python_version ($architecture) installation complete"
-    } else {
+    }
+    else {
         Write-Host "Failed to install Python in $python_home"
         Get-Content -Path $install_log
         Exit 1
@@ -70,49 +71,55 @@ function InstallMiniconda ($python_version, $architecture, $python_home) {
 }
 
 function InstallCondaPackages ($python_home, $spec) {
-    $conda_path = $python_home + "\Scripts\conda.exe"
-    $args = "install --yes " + $spec
-    Write-Host ("conda " + $args)
-    Start-Process -FilePath "$conda_path" -ArgumentList $args -Wait -Passthru
+    $conda_path = $python_home + '\Scripts\conda.exe'
+    $input_args = 'install --yes ' + $spec
+    Write-Host ('conda ' + $input_args)
+    Start-Process -FilePath "$conda_path" -ArgumentList $input_args -Wait -PassThru
 }
 
 function UpdateConda ($python_home) {
-    $conda_path = $python_home + "\Scripts\conda.exe"
-    Write-Host "Updating conda..."
-    $args = "update --yes conda"
-    Write-Host $conda_path $args
-    Start-Process -FilePath "$conda_path" -ArgumentList $args -Wait -Passthru
+    $conda_path = $python_home + '\Scripts\conda.exe'
+    Write-Host 'Updating conda...'
+    $input_args = 'update --yes conda'
+    Write-Host $conda_path $input_args
+    Start-Process -FilePath "$conda_path" -ArgumentList $input_args -Wait -PassThru
 }
 
 function InstallComtypes ($python_home) {
-    $pip_path = $python_home + "\Scripts\pip.exe"
-    $args = "install comtypes"
-    Start-Process -FilePath "$pip_path" -ArgumentList $args -Wait -Passthru
+    $pip_path = $python_home + '\Scripts\pip.exe'
+    $input_args = 'install comtypes'
+    Start-Process -FilePath "$pip_path" -ArgumentList $input_args -Wait -PassThru
 }
 
 function main () {
     try {
-        $CurrentResolution = Get-DisplayResolution
-        Write-Host "Current resolution: " $CurrentResolution
+        $CurrentResolution = Get-DisplayResolution -ErrorAction 'SilentlyContinue'
+        Write-Host 'Current resolution: ' $CurrentResolution
     }
-    Catch [Exception]{
-        Write-Host "Can't print current resolution. Get-DisplayResolution cmd is not available"
+    Catch [Exception] {
+        Write-Host "Can't print current resolution. `Get-DisplayResolution` command is not available."
     }
 
     # fallback for running the script locally
-    if ( !(Test-Path $env:PYTHON) ) {
-        Write-Host "No PYTHON vars, setup default values"
-        $env:PYTHON="C:\\Python34-x64"
-        $env:PYTHON_VERSION="3.4"
-        $env:PYTHON_ARCH="64"     
+    if ($null -eq $env:PYTHON) {
+        $env:PYTHON = 'py -3'
     }
-    Write-Host "PYTHON=" $env:PYTHON
-    Write-Host "PYTHON_VERSION=" $env:PYTHON_VERSION
-    Write-Host "PYTHON_ARCH=" $env:PYTHON_ARCH
 
-    if ($env:UIA_SUPPORT -eq "YES") {
+    if ( !(Test-Path $env:PYTHON) ) {
+        Write-Host 'No PYTHON vars, setup default values'
+        $env:PYTHON = 'C:\\Python34-x64'
+        $env:PYTHON_VERSION = '3.4'
+        $env:PYTHON_ARCH = '64'
+    }
+
+    Write-Host 'PYTHON=' $env:PYTHON
+    Write-Host 'PYTHON_VERSION=' $env:PYTHON_VERSION
+    Write-Host 'PYTHON_ARCH=' $env:PYTHON_ARCH
+
+    if ($env:UIA_SUPPORT -eq 'YES') {
         InstallComtypes $env:PYTHON
     }
+
     #InstallMiniconda $env:PYTHON_VERSION $env:PYTHON_ARCH $env:PYTHON
     #UpdateConda $env:PYTHON
     #InstallCondaPackages $env:PYTHON "pywin32 Pillow coverage nose"
