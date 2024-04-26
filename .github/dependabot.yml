@@ -4,8 +4,19 @@
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
+
 updates:
   - package-ecosystem: "github-actions" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+
+    # `dependabot.yml` file using the `dependency-type` option to group updates
+    # in conjunction with `patterns` and `exclude-patterns`.
+    # Grouping rules default to applying to version updates only, since
+    # the `applies-to` key is absent.
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
