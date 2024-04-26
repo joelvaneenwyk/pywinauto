@@ -115,7 +115,7 @@ dev = [
     "pytest-xdist",
     "pytest",
     "mock",
-    "nose",
+    "pynose>=1.5.1",
     # Coverage
     "codacy-coverage",
     "codecov",
@@ -140,6 +140,15 @@ Source = "https://github.com/joelvaneenwyk/pywinauto"
 [build-system]
 requires = ["setuptools>=61.2"]
 build-backend = "setuptools.build_meta"
+
+[tool]
+rye = { dev-dependencies = [
+    "ruff>=0.4.2",
+    "pytest>=8.1.2",
+    "pynose>=1.5.1",
+    "mypy>=1.10.0",
+    "pre-commit>=3.7.0",
+] }
 
 [tool.pdm]
 distribution = true
