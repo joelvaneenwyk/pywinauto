@@ -3,6 +3,9 @@
 #
 
 *.lock
+/warnings.txt
+html_docs/
+pdf_docs/
 
 .venv/
 sphinx_build_log.txt

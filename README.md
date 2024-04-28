@@ -5,12 +5,9 @@
 [![Documentation Status](https://readthedocs.org/projects/pywinauto/badge/?version=latest)](https://pywinauto.readthedocs.org/en/latest/?badge=latest)
 
 [![Windows Tests](https://ci.appveyor.com/api/projects/status/ykk30v7vcvkmpnoq/branch/master?svg=true&passingText=Windows%20tests%20-%20OK&pendingText=Windows%20tests%20-%20running&failingText=Windows%20tests%20-%20fail)](https://ci.appveyor.com/project/pywinauto/pywinauto)
-[![Linux Tests](https://travis-ci.org/pywinauto/pywinauto.svg?branch=master)](https://travis-ci.org/pywinauto/pywinauto)
 
-[![codecov.io](https://codecov.io/github/pywinauto/pywinauto/coverage.svg?branch=master)](https://codecov.io/github/pywinauto/pywinauto?branch=master)
-
-[![Code Health](https://landscape.io/github/joelvaneenwyk/pywinauto/develop/landscape.svg?style=flat)](https://landscape.io/github/joelvaneenwyk/pywinauto/develop)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b823b31c0f2b48d6873326d038c5a516)](https://www.codacy.com/app/pywinauto/pywinauto?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pywinauto/pywinauto&amp;utm_campaign=Badge_Grade)
+[![codecov.io](https://codecov.io/github/joelvaneenwyk/pywinauto/coverage.svg?branch=master)](https://codecov.io/github/pywinauto/pywinauto?branch=master)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/38ef0d0a767d4b91879be60e4649a8b1)](https://app.codacy.com/gh/joelvaneenwyk/pywinauto/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 `pywinauto` is a set of python modules to automate the Microsoft Windows GUI.
 At its simplest it allows you to send mouse and keyboard actions to windows
