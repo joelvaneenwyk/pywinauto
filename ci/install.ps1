@@ -86,6 +86,9 @@ function UpdateConda ($python_home) {
 }
 
 function InstallComtypes ($python_home) {
+    # $pip_path = $python_home + "\Scripts\pip.exe"
+    # $args = "install https://github.com/junkmd/comtypes/archive/refs/heads/fix_issue_524_syntaxerror_and_more.zip"
+    # Start-Process -FilePath "$pip_path" -ArgumentList $args -Wait -Passthru
     $pip_path = $python_home + '\Scripts\pip.exe'
     $input_args = 'install comtypes'
     Start-Process -FilePath "$pip_path" -ArgumentList $input_args -Wait -PassThru
