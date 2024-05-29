@@ -1,5 +1,6 @@
 {
     "files.associations": {
+        "MANIFEST.in": "plaintext",
         "requirements*.lock": "pip-requirements",
         "requirements*.txt": "pip-requirements"
     },

@@ -16,6 +16,7 @@ checkflag
 checkmaps
 checkmapsshare
 Chul
+cmds
 Codacy
 codecov
 Codecov
