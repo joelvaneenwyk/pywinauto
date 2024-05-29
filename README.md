@@ -4,9 +4,9 @@
 [![Join the chat at https://gitter.im/pywinauto/pywinauto](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pywinauto/pywinauto?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Documentation Status](https://readthedocs.org/projects/pywinauto/badge/?version=latest)](https://pywinauto.readthedocs.org/en/latest/?badge=latest)
 
-[![Windows Tests](https://ci.appveyor.com/api/projects/status/ykk30v7vcvkmpnoq/branch/master?svg=true&passingText=Windows%20tests%20-%20OK&pendingText=Windows%20tests%20-%20running&failingText=Windows%20tests%20-%20fail)](https://ci.appveyor.com/project/pywinauto/pywinauto)
+[![Windows Tests](https://ci.appveyor.com/api/projects/status/ykk30v7vcvkmpnoq/branch/develop?svg=true&passingText=Windows%20tests%20-%20OK&pendingText=Windows%20tests%20-%20running&failingText=Windows%20tests%20-%20fail)](https://ci.appveyor.com/project/joelvaneenwyk/pywinauto)
 
-[![codecov.io](https://codecov.io/github/joelvaneenwyk/pywinauto/coverage.svg?branch=master)](https://codecov.io/github/pywinauto/pywinauto?branch=master)
+[![codecov.io](https://codecov.io/github/joelvaneenwyk/pywinauto/coverage.svg?branch=develop)](https://codecov.io/github/joelvaneenwyk/pywinauto?branch=develop)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/38ef0d0a767d4b91879be60e4649a8b1)](https://app.codacy.com/gh/joelvaneenwyk/pywinauto/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 `pywinauto` is a set of python modules to automate the Microsoft Windows GUI.
@@ -19,16 +19,16 @@ MS UI Automation (`backend="uia"`). User input emulation modules
 
 ## Enjoying this?
 
-Just star the repo or make a donation.
+Just star [the repo](https://github.com/joelvaneenwyk/pywinauto) or make a donation.
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UGXPL6AD29PHW)
 
 Your help is valuable since this is a hobby project for all of us: we do
-[new features](https://github.com/pywinauto/pywinauto/issues?q=is%3Aissue+is%3Aopen+label%3A%22New+Feature%22) development during out-of-office hours.
+[new features](https://github.com/joelvaneenwyk/pywinauto/issues?q=is%3Aissue+is%3Aopen+label%3A%22New+Feature%22) development during out-of-office hours.
 
-* In general the library **tends to be cross-platform** in the near future (Linux in 2018, macOS in 2019).
-* Reliable text based **"record-replay"** generator is also a high priority feature under development.
-* More feature requests and discussions are welcome in [the issues](https://github.com/pywinauto/pywinauto/issues).
+- In general the library **tends to be cross-platform** in the near future (Linux in 2018, macOS in 2019).
+- Reliable text based **"record-replay"** generator is also a high priority feature under development.
+- More feature requests and discussions are welcome in [the issues](https://github.com/joelvaneenwyk/pywinauto/issues).
 
 ## Setup
 
@@ -40,10 +40,11 @@ rye sync -f
 
 ## Documentation / Help
 
-* [Short Intro on ReadTheDocs](https://pywinauto.readthedocs.io/en/latest/)
-* [Getting Started Guide](https://pywinauto.readthedocs.io/en/latest/getting_started.html) (core concept, Spy/Inspect tools etc.)
-* [StackOverflow tag](https://stackoverflow.com/questions/tagged/pywinauto) for questions
-* [Mailing list](https://sourceforge.net/p/pywinauto/mailman/)
+- [Home page](https://pywinauto.github.io/)
+- [Intro on ReadTheDocs](https://pywinauto.readthedocs.io/en/latest/)
+- [Getting Started Guide](https://pywinauto.readthedocs.io/en/latest/getting_started.html) (core concept, Spy/Inspect tools etc.)
+- [StackOverflow tag](https://stackoverflow.com/questions/tagged/pywinauto) for questions
+- [Mailing list](https://sourceforge.net/p/pywinauto/mailman/)
 
 ## Simple Example
 
@@ -85,27 +86,27 @@ Properties.wait_not('visible') # make sure the dialog is closed
 
 ## Dependencies (if install manually)
 
-* Windows:
-  * [pyWin32](https://github.com/mhammond/pywin32/)
-  * [comtypes](https://github.com/enthought/comtypes)
-  * [six](https://pypi.python.org/pypi/six)
-* Linux:
-  * [python-xlib](https://github.com/python-xlib/python-xlib)
-  * [six](https://pypi.python.org/pypi/six)
-* Optional packages:
-  * [Pillow](https://pypi.python.org/pypi/Pillow) - `pip install -U Pillow` - enables `capture_as_image()` method
+- Windows:
+  - [pyWin32](https://github.com/mhammond/pywin32/)
+  - [comtypes](https://github.com/enthought/comtypes)
+  - [six](https://pypi.python.org/pypi/six)
+- Linux:
+  - [python-xlib](https://github.com/python-xlib/python-xlib)
+  - [six](https://pypi.python.org/pypi/six)
+- Optional packages:
+  - [Pillow](https://pypi.python.org/pypi/Pillow) - `pip install -U Pillow` - enables `capture_as_image()` method
     for making a control's snapshot.
 
 ## Packages Required for Unit Tests
 
-* [Pillow](https://pypi.python.org/pypi/Pillow)
-* [coverage](https://pypi.python.org/pypi/coverage)
+- [Pillow](https://pypi.python.org/pypi/Pillow)
+- [coverage](https://pypi.python.org/pypi/coverage)
 
 Run all the tests: `python ./pywinauto/unittests/testall.py`
 
 ## Contribution
 
-Pull requests are very welcome. Read [Contribution Guide](https://github.com/pywinauto/pywinauto/wiki/Contribution-Guide-(draft)) for more details about unit tests, coding conventions, etc.
+Pull requests are very welcome. Read [Contribution Guide](https://github.com/joelvaneenwyk/pywinauto/wiki/Contribution-Guide-(draft)) for more details about unit tests, coding conventions, etc.
 
 ## Copyrights
 
@@ -116,7 +117,8 @@ Further contributors are inspired of the nice API so that the development contin
 Starting from 0.6.0 pywinauto is distributed under the BSD 3-clause license.
 Pywinauto 0.5.4 and before was distributed under the LGPL v2.1 or later.
 
-* (c) [The Open Source Community](https://github.com/pywinauto/pywinauto/graphs/contributors), 2015-2018 (0.6.0+ development)
-* (c) Intel Corporation, 2015 (0.5.x maintenance)
-* (c) Michael Herrmann, 2012-2013 (0.4.2)
-* (c) Mark Mc Mahon, 2006-2010 (0.4.0 and before)
+- (c) [Joel Van Eenwyk](https://github.com/joelvaneenwyk), 2024 (0.7.0+ development)
+- (c) [The Open Source Community](https://github.com/joelvaneenwyk/pywinauto/graphs/contributors), 2015-2018 (0.6.0+ development)
+- (c) Intel Corporation, 2015 (0.5.x maintenance)
+- (c) Michael Herrmann, 2012-2013 (0.4.2)
+- (c) Mark Mc Mahon, 2006-2010 (0.4.0 and before)

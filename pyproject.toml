@@ -34,20 +34,8 @@
 
 [project]
 name = "pywinauto"
-version = "0.6.8"
+version = "0.7.0b1"
 description = "A set of Python modules to automate the Microsoft Windows GUI"
-# long_description = """
-# At it's simplest it allows you to send mouse and keyboard
-# actions to windows dialogs and controls, but It has support for more complex
-# controls also.
-#
-# Useful links
-# -------------
-# - Home page: https://pywinauto.github.io/
-# - Docs Intro: https://pywinauto.readthedocs.io/en/latest/
-# - Getting Started Guide: https://pywinauto.readthedocs.io/en/latest/getting_started.html
-# - StackOverflow tag: https://stackoverflow.com/questions/tagged/pywinauto
-# """
 authors = [
     { name = "Mark Mc Mahon and Contributors", email = "pywinauto-users@lists.sourceforge.net" },
     { name = "Joel Van Eenwyk", email = "joel.vaneenwyk@gmail.com" },
@@ -70,10 +58,8 @@ classifiers = [
     "License :: OSI Approved :: BSD License",
     "Operating System :: Microsoft :: Windows",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: Implementation :: CPython",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Software Development :: Quality Assurance",
@@ -86,24 +72,24 @@ dependencies = [
     "PyQt5; python_version > '3.6'",
     # Windows
     "comtypes>=1.4.0; sys_platform == 'win32'",
-    "pywin32>=306",
+    "pywin32>=306; sys_platform == 'win32'",
     # General
     "pillow",
-    'python-xlib; platform_system != "Windows"',
+    "python-xlib; sys_platform != 'win32'",
     # Compatibility
     "six",
     # Build
     "setuptools>=65.0.0",
 ]
 readme = "README.md"
-requires-python = ">=3.8, <3.12"
+requires-python = ">=3.10,<3.12"
 
 [project.urls]
 Homepage = "https://joelvaneenwyk.github.io/pywinauto"
 Source = "https://github.com/joelvaneenwyk/pywinauto"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling>=1.12.0"]
 build-backend = "hatchling.build"
 
 [tool.rye]
@@ -132,6 +118,17 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pywinauto"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "*.vsidx",
+    "*.VC.opendb",
+    "/.github",
+    "/docs",
+    "/previousReleases",
+    "/dist",
+    "/apps",
+]
 
 [tool.coverage.run]
 source = ["pywinauto/"]
