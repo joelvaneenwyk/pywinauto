@@ -20,6 +20,9 @@ previousReleases/
 /src/
 /tests/
 /TestResultsReport/
+html_docs/
+pdf_docs/
+/warnings.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
