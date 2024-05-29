@@ -1,4 +1,4 @@
-python = "3.11.8"
+act = "0.2.62"
 
 [plugins]
 act = "source:https://raw.githubusercontent.com/theomessin/proto-toml-plugins/master/act.toml"

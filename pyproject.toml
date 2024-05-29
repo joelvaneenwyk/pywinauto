@@ -152,6 +152,10 @@ omit = [
 [tool.ruff]
 line-length = 120
 
+[tool.ruff.lint]
+# Disable fix for unused imports (`F401`).
+unfixable = ["F401"]
+
 [tool.flake8]
 ignore = [
     # list comprehension redefines ...
