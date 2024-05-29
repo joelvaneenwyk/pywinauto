@@ -1,17 +1,17 @@
-include docs\*.txt
+include docs/*.txt
 include LICENSE
 include setup.cfg
 include setup.py
 
-include pywinauto\controls\*.py
-include pywinauto\tests\*.py
-include pywinauto\unittests\*.py
-include pywinauto\linux\*.py
+include src/pywinauto/controls/*.py
+include src/pywinauto/tests/*.py
+include src/pywinauto/unittests/*.py
+include src/pywinauto/linux/*.py
 
 # include the examples - but not Watsup or .svn directories
-include examples\*.py
-exclude examples\examples_watsup\*.py
+include examples/*.py
+exclude examples/examples_watsup/*.py
 
 # include all the website folder and make sure that
 # the sub version files are not included
-exclude pywinauto\docs\.doctrees\*
+exclude src/pywinauto/docs/.doctrees/*

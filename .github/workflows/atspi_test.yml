@@ -79,13 +79,13 @@ jobs:
 
       - name: Run Tests
         run: |
-          coverage run -a --include=pywinauto/mouse.py pywinauto/unittests/test_mouse.py
-          coverage run -a --include=pywinauto/linux/keyboard.py pywinauto/unittests/test_keyboard.py
-          coverage run -a --include=pywinauto/linux/clipboard.py pywinauto/unittests/test_clipboard_linux.py
-          coverage run -a --include=pywinauto/linux/application.py pywinauto/unittests/test_application_linux.py
-          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_element_info.py
-          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_wrapper.py
-          coverage run -a --source=pywinauto/linux,pywinauto/controls pywinauto/unittests/test_atspi_controls.py
+          coverage run -a --include=src/pywinauto/mouse.py src/pywinauto/unittests/test_mouse.py
+          coverage run -a --include=src/pywinauto/linux/keyboard.py src/pywinauto/unittests/test_keyboard.py
+          coverage run -a --include=src/pywinauto/linux/clipboard.py src/pywinauto/unittests/test_clipboard_linux.py
+          coverage run -a --include=src/pywinauto/linux/application.py src/pywinauto/unittests/test_application_linux.py
+          coverage run -a --source=src/pywinauto/linux,src/pywinauto/controls src/pywinauto/unittests/test_atspi_element_info.py
+          coverage run -a --source=src/pywinauto/linux,src/pywinauto/controls src/pywinauto/unittests/test_atspi_wrapper.py
+          coverage run -a --source=src/pywinauto/linux,src/pywinauto/controls src/pywinauto/unittests/test_atspi_controls.py
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1

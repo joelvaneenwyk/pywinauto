@@ -131,7 +131,7 @@ exclude = [
 ]
 
 [tool.coverage.run]
-source = ["pywinauto/"]
+source = ["src/pywinauto/"]
 omit = [
     "*/.venv/*",
     "*/.vscode/*",
@@ -145,6 +145,7 @@ omit = [
     # omit this single file
     "utils/tirefire.py",
 ]
+disable_warnings = ["include-ignored"]
 
 [tool.ruff]
 line-length = 120

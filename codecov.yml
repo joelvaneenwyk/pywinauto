@@ -12,7 +12,7 @@ comment:
 coverage:
   precision: 1
   ignore:
-    - pywinauto/unittests/.*
+    - src/pywinauto/unittests/.*
     - examples/.*
   status:
     patch: false
