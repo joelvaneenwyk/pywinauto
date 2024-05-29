@@ -8,7 +8,8 @@ Requirements:
   - UAC is fully disabled
 """
 from __future__ import print_function
-import sys, os
+import sys
+import os
 os.chdir(os.path.join(os.getcwd(), os.path.dirname(sys.argv[0])))
 import pywinauto
 

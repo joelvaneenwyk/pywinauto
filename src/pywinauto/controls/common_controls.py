@@ -682,7 +682,7 @@ class _listview_item(object):
             wait_until(Timings.listviewitemcontrol_timeout, 0.05, check_func)
         except TimeoutError:
             raise TimeoutError(("In-place-edit control for item ({0},{1}) not visible, possible it not editable, " +
-                                "try to set slower timings").format(self.item_index, self.subitem_index));
+                                "try to set slower timings").format(self.item_index, self.subitem_index))
 
         possible_inplace_ctrls = set(get_list_after_click()) - set(list_before_click)
 
@@ -693,7 +693,7 @@ class _listview_item(object):
 
         names_list = [hwndwrapper.HwndWrapper(handle).friendlyclassname for handle in possible_inplace_ctrls]
         raise RuntimeError('In-place-edit control "{2}" for item ({0},{1}) not found in list {3}'.format(
-                           self.item_index, self.subitem_index, friendly_class_name, names_list));
+                           self.item_index, self.subitem_index, friendly_class_name, names_list))
 
 
 #====================================================================

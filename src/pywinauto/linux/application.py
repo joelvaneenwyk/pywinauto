@@ -181,7 +181,7 @@ class Application(BaseApplication):
 
         Returns True if process is running otherwise - False
         """
-        if not str(self.process) in os.listdir('/proc'):
+        if str(self.process) not in os.listdir('/proc'):
             return False
         else:
             return True

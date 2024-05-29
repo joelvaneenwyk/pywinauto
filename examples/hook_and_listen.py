@@ -8,17 +8,17 @@ from pywinauto.windows.win32_hooks import MouseEvent
 
 def on_timer():
     """Callback by timer out"""
-    win32api.PostThreadMessage(main_thread_id, win32con.WM_QUIT, 0, 0);
+    win32api.PostThreadMessage(main_thread_id, win32con.WM_QUIT, 0, 0)
 
 
 def on_event(args):
     """Callback for keyboard and mouse events"""
     if isinstance(args, KeyboardEvent):
         if args.current_key == 'A' and args.event_type == 'key down' and 'Lcontrol' in args.pressed_key:
-            print("Ctrl + A was pressed");
+            print("Ctrl + A was pressed")
 
         if args.current_key == 'K' and args.event_type == 'key down':
-            print("K was pressed");
+            print("K was pressed")
 
         if args.current_key == 'M' and args.event_type == 'key down' and 'U' in args.pressed_key:
             hk.unhook_mouse()

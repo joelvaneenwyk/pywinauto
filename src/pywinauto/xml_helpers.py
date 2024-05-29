@@ -40,7 +40,8 @@ from xml.etree.cElementTree import ElementTree
 import six
 import ctypes
 import re
-import bz2, base64
+import bz2
+import base64
 try:
     import PIL.Image
     PIL_imported = True
@@ -453,7 +454,7 @@ def ReadPropertiesFromFile(filename):
         props = [props]
 
     # it is an old XML so let's fix it up a little
-    if not ("_version_" in parsed.attrib.keys()):
+    if "_version_" not in parsed.attrib.keys():
 
         # find each of the control elements
         for ctrl_prop in props:

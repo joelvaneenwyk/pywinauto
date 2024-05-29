@@ -34,7 +34,7 @@ import logging
 try:
     import logger
     _found_logger = (logger.Logger.sectionStart is not None)
-except (ImportError, AttributeError) as exc:
+except (ImportError, AttributeError):
     _found_logger = False
 
 

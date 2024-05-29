@@ -368,7 +368,7 @@ class HwndWrapper(WinBaseWrapper):
     # -----------------------------------------------------------
     def is_dialog(self):
         """Return true if the control is a top level window"""
-        if not ("isdialog" in self._cache.keys()):
+        if "isdialog" not in self._cache.keys():
             self._cache['isdialog'] = handleprops.is_toplevel_window(self)
 
         return self._cache['isdialog']
@@ -985,7 +985,7 @@ class HwndWrapper(WinBaseWrapper):
         is_main_menu = True
         if not hMenu:
             self._ensure_enough_privileges('MN_GETHMENU')
-            hMenu = self.send_message(self.handle, win32defines.MN_GETHMENU);
+            hMenu = self.send_message(self.handle, win32defines.MN_GETHMENU)
             is_main_menu = False
         return (hMenu, is_main_menu)
 

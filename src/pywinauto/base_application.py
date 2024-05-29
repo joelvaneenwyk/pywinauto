@@ -376,7 +376,7 @@ class WindowSpecification(object):
                 findbestmatch.MatchError,
                 controls.InvalidWindowHandle,
                 controls.InvalidElement,
-                TimeoutError) as e:
+                TimeoutError):
             raise TimeoutError('Timed out: can not find control with the given criteria {}'.format(self.criteria[-1]))
 
         correct_wait_for = wait_for.lower().split()
@@ -453,7 +453,7 @@ class WindowSpecification(object):
                     findbestmatch.MatchError,
                     controls.InvalidWindowHandle,
                     controls.InvalidElement,
-                    TimeoutError) as e:
+                    TimeoutError):
                 return
             for condition in correct_wait_for:
                 time_left -= timestamp() - start

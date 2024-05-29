@@ -34,7 +34,8 @@ from __future__ import unicode_literals
 
 # pylint:  disable-msg=W0212,F0401,R0904
 
-import os, sys
+import os
+import sys
 import codecs
 import unittest
 sys.path.append(".")
