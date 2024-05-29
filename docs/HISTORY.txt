@@ -2,6 +2,16 @@
 Change Log
 ==========
 
+UNRELEASED Bug Fixes
+--------------------------------------------------------------------
+01-August-2024
+
+Enhancements:
+ * ...
+
+Bug Fixes:
+ * ...
+
 0.6.8 Bug Fixes
 --------------------------------------------------------------------
 27-October-2019
@@ -380,9 +390,9 @@ Enhancements:
 
  * Fix ``DebugMessage`` method
 
- * Disable logging (actionlogger.py) by default, provide shortcuts: 
-   ``actionlogger.enable()`` and ``actionlogger.disable()``. For those who are 
-   familiar with standard ``logging`` module there's method 
+ * Disable logging (actionlogger.py) by default, provide shortcuts:
+   ``actionlogger.enable()`` and ``actionlogger.disable()``. For those who are
+   familiar with standard ``logging`` module there's method
    ``actionlogger.set_level(level)``
 
 
@@ -443,26 +453,26 @@ Enhancements:
  * Use 'SendMessageTimeout' to get the text of a window. (SendMessage will hang
    if the application is not processing messages)
 
- * Fixed references to PIL.ImageGrab. PIL add's it's module directly to the 
-   module path, so it should just be referenced by ImageGrab and not 
+ * Fixed references to PIL.ImageGrab. PIL add's it's module directly to the
+   module path, so it should just be referenced by ImageGrab and not
    PIL.ImageGrab.
 
  * Use AttachThreadInput + PostMessage rather than SendMessageTimeout to send
    mouse clicks.
- 
- * Fix how timeout retry times are calculated in timings.WaitUntil() and 
+
+ * Fix how timeout retry times are calculated in timings.WaitUntil() and
    timings.Wait
- 
- * Fixed some issues with application.Kill_() method, highlighted due to the 
+
+ * Fixed some issues with application.Kill_() method, highlighted due to the
    changes in the HwndWrapper.Close() method.
-   
+
  * Fix writing images to XML. It was broken with updates to PIL that I had not
    followed. Changed the method of knowing if it is an image by checking for
    various attributes.
- 
- * Renamed WindowSpecification.(Ww)indow() to ChildWindow() and added 
+
+ * Renamed WindowSpecification.(Ww)indow() to ChildWindow() and added
    deprecation messages for the other functions.
- 
+
  * Improved the tests (fixed test failures which were not pywinauto issues)
 
 
