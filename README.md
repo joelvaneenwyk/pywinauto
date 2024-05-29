@@ -32,7 +32,11 @@ Your help is valuable since this is a hobby project for all of us: we do
 
 ## Setup
 
-* run `pip install -U pywinauto` (dependencies will be installed automatically)
+Run the following to get an environment setup.
+
+```bash
+rye sync -f
+```
 
 ## Documentation / Help
 

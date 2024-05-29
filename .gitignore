@@ -17,7 +17,6 @@ previousReleases/
 /Scripts/
 /pyvenv.cfg
 /Lib/
-/src/
 /tests/
 /TestResultsReport/
 html_docs/
