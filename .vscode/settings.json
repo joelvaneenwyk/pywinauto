@@ -1,6 +1,6 @@
 {
     "[python]": {
-    "editor.codeActionsOnSave": {    
+    "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",
         "source.organizeImports": "explicit"
     },
@@ -25,5 +25,6 @@
     "ruff.lineLength": 120,
     "ruff.lint.preview": true,
     "ruff.configurationPreference": "filesystemFirst",
-    "ruff.nativeServer": true
+    "ruff.nativeServer": true,
+    "FSharp.suggestGitignore": false
 }
