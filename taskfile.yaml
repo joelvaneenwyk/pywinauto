@@ -11,12 +11,9 @@ tasks:
       - echo "{{.GREETING}}"
     silent: true
 
-  init:
+  build:
     cmds:
-      - cmd: echo "hello" # set "PATH=%USERPROFILE%\AppData\Roaming\pdm\venv\Scripts;%PATH%"
-      - cmd: echo "hello" # set PDM_IGNORE_ACTIVE_VENV=1
-      - cmd: echo "hello" # call "%USERPROFILE%\AppData\Roaming\pdm\venv\Scripts\activate.bat"
-      - cmd: echo "hello" # pip3 install setuptools
-      - cmd: echo "hello" # pdm add setuptools
-      - cmd: echo "hello" # pdm init
-      - cmd: echo "hello" # pdm import setup.py
+      - cmd: git add .
+      - cmd: rye sync -f
+      - cmd: rye build
+      - cmd: rye run pytest --cov-report xml:cov.xml --cov-report html:cov.html --cov=pywinauto .\src\pywinauto\unittests\test_actionlogger.py
