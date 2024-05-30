@@ -23,7 +23,7 @@ environment:
 install:
   # install the appropriate Miniconda (Py2/Py3, 32/64 bit),
   # as well as pywin32, pillow and coverage
-  - "powershell ./ci/install.ps1"
+  - "powershell ./.github/scripts/install.ps1"
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
 
   # Install the build dependencies of the project. If some dependencies contain
@@ -36,7 +36,7 @@ build: false # Not a C# project, build stuff at the test step instead.
 
 test_script:
   # run the tests
-  - "powershell ./ci/runTestsuite.ps1"
+  - "powershell ./.github/scripts/run_tests.ps1"
 
 after_test:
   - codecov
