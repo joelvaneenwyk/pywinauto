@@ -28,7 +28,7 @@ jobs:
       - name: Setup Python
         uses: eifinger/setup-rye@v3
         with:
-          enable-cache: true
+          enable-cache: false
           cache-prefix: "cache-${{ matrix.os }}-${{ matrix.python }}"
 
       - name: Do something if the cache was restored
