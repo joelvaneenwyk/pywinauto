@@ -1,4 +1,21 @@
 {
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "modificationsIfAvailable",
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+    },
+    "files.associations": {
+        "MANIFEST.in": "plaintext",
+        "requirements*.lock": "pip-requirements",
+        "requirements*.txt": "pip-requirements",
+        "ruff.showNotifications": "onWarning"
+    },
+    "python.testing.pytestEnabled": false,
     "python.testing.unittestArgs": [
         "-v",
         "-s",
@@ -6,6 +23,12 @@
         "-p",
         "*.py"
     ],
-    "python.testing.pytestEnabled": false,
-    "python.testing.unittestEnabled": true
+    "python.testing.unittestEnabled": true,
+    "ruff.configuration": "pyproject.toml",
+    "ruff.format.preview": true,
+    "ruff.lineLength": 120,
+    "ruff.lint.preview": true,
+    "ruff.configurationPreference": "filesystemFirst",
+    "ruff.nativeServer": true,
+    "FSharp.suggestGitignore": false
 }

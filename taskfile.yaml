@@ -1,0 +1,48 @@
+# https://taskfile.dev
+#
+# install: brew install go-task/tap/go-task
+
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  proto-install:
+    status:
+      - test -f $HOME/.proto/bin/proto
+    cmds:
+      - cmd: curl -fsSL https://moonrepo.dev/install/proto.sh | bash -s -- --yes
+        platforms: [linux, darwin]
+      - cmd: irm https://moonrepo.dev/install/proto.ps1 | iex
+        platforms: [windows]
+
+  setup-proto:
+    deps: [proto-install]
+    preconditions:
+      - test -f .prototools
+    status:
+      - test -f .build/.proto
+    cmds:
+      - proto plugin add act "source:https://raw.githubusercontent.com/theomessin/proto-toml-plugins/master/act.toml"
+      - proto install act --pin
+      - proto plugin add actionlint "source:https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/actionlint/plugin.toml"
+      - proto install actionlint --pin
+      - proto plugin add task "source:https://raw.githubusercontent.com/Phault/proto-toml-plugins/main/task/plugin.toml"
+      - proto install task --pin
+      - proto up
+      - cmd: proto outdated --update
+        ignore_error: true
+        silent: true
+      - proto use
+      - mkdir -p .build
+      - touch .build/.proto
+
+  build:
+    deps: [setup-proto]
+    cmds:
+      - cmd: git add .
+      - cmd: rye sync -f
+      - cmd: rye build
+      - cmd: rye run pytest --cov-report xml:nosetests.xml --cov-report html:.build/tests/ --cov=pywinauto ./src/pywinauto/unittests/test_actionlogger.py

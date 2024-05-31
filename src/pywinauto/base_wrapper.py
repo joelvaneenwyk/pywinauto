@@ -460,7 +460,7 @@ class BaseWrapper(object):
         no top level parent then the control itself is returned - as it is
         a top level window already!)
         """
-        if not ("top_level_parent" in self._cache.keys()):
+        if "top_level_parent" not in self._cache.keys():
             self._cache["top_level_parent"] = self.backend.generic_wrapper_class(self.element_info.top_level_parent)
         return self._cache["top_level_parent"]
 

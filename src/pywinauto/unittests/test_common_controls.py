@@ -504,7 +504,7 @@ class ListViewWinFormTestCases32(unittest.TestCase):
         """Test the ListView inplace_control method using DateTimePicker"""
         dt_picker = self.ctrl.get_item(2,0).inplace_control("DateTimePicker")
         dt_picker.set_time(year=2017, month=5, day=23)
-        cur_time = dt_picker.get_time();
+        cur_time = dt_picker.get_time()
         self.assertEqual(cur_time.wYear, 2017)
         self.assertEqual(cur_time.wMonth, 5)
         self.assertEqual(cur_time.wDay, 23)

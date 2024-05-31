@@ -2,6 +2,21 @@
 # pywinauto
 #
 
+.build/
+.vs/
+
+/warnings.txt
+html_docs/
+pdf_docs/
+
+# We intentionally do not submit these lock files as they
+# are not yet cross-platform.
+requirements*.lock
+
+cov.*
+test_logging.txt
+
+.pytest_cache/
 .venv/
 sphinx_build_log.txt
 docs/code/
@@ -12,8 +27,8 @@ previousReleases/
 /Scripts/
 /pyvenv.cfg
 /Lib/
-/src/
 /tests/
+/TestResultsReport/
 html_docs/
 pdf_docs/
 /warnings.txt

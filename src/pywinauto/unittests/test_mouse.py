@@ -25,11 +25,9 @@ else:
 
 
 def _test_app():
-    test_folder = os.path.join(os.path.dirname
-                               (os.path.dirname
-                                (os.path.dirname
-                                 (os.path.abspath(__file__)))),
-                               r"apps/MouseTester")
+    test_folder = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), os.path.pardir, os.path.pardir, os.path.pardir, r'apps/MouseTester'
+    )
     if sys.platform == 'win32':
         return os.path.join(test_folder, "mousebuttons.exe")
     else:
