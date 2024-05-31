@@ -2,6 +2,7 @@
 # pywinauto
 #
 
+.build/
 .vs/
 
 /warnings.txt
