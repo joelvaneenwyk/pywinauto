@@ -8,12 +8,11 @@ vars:
 tasks:
   default:
     cmds:
-      - echo "{{.GREETING}}"
-    silent: true
+      - task: build
 
   build:
     cmds:
       - cmd: git add .
       - cmd: rye sync -f
       - cmd: rye build
-      - cmd: rye run pytest --cov-report xml:cov.xml --cov-report html:cov.html --cov=pywinauto .\src\pywinauto\unittests\test_actionlogger.py
+      - cmd: rye run pytest --cov-report xml:nosetests.xml --cov-report html:.build/tests/ --cov=pywinauto ./src/pywinauto/unittests/test_actionlogger.py

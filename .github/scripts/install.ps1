@@ -127,11 +127,13 @@ function main() {
     Write-Host "PYTHON_ARCH=$PythonArch"
 
     try {
+        # https://github.com/kzm4269/rye-installation-scripts/blob/main/windows10/install_rye.ps1
+        # For scoop bucket with rye: https://github.com/Vechro/ryence
         $InstallerExe = 'rye-x86_64-windows.exe'
-        $InstallerUrl = 'https://github.com/astral-sh/rye/releases/latest/download/$filePath'
+        $InstallerUrl = "https://github.com/astral-sh/rye/releases/latest/download/$filePath"
 
         Write-Host 'Downloading Rye installer'
-        Invoke-WebRequest -UseBasicParsing -o $InstallerExe $InstallerUrl
+        Invoke-WebRequest -UseBasicParsing -o "$InstallerExe" "$InstallerUrl"
         Write-Host 'Executing: rye self install'
         & $InstallerExe self install --yes
         Write-Host 'Executing: rye self update'
@@ -142,6 +144,7 @@ function main() {
         }
     }
     catch {
+        Write-Host 'Failed to install Rye and Python.'
         <#Do this if a terminating exception happens#>
         # cargo install --git https://github.com/astral-sh/rye rye
     }

@@ -34,7 +34,7 @@ function run {
     Write-Host $env:APPVEYOR_BUILD_FOLDER
     Set-Location $env:APPVEYOR_BUILD_FOLDER
 
-    $stylesheet = './ci/transform_xunit_to_appveyor.xsl'
+    $stylesheet = './.github/scripts/transform_xunit_to_appveyor.xsl'
     $inputConfig = 'nosetests.xml'
     $output = 'transformed.xml'
 
