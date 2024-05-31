@@ -2,6 +2,8 @@
 # pywinauto
 #
 
+.vs/
+
 /warnings.txt
 html_docs/
 pdf_docs/
