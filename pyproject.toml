@@ -9,14 +9,14 @@
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #
-# * Redistributions of source code must retain the above copyright notice, this
+# - Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
 #
-# * Redistributions in binary form must reproduce the above copyright notice,
+# - Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
 #
-# * Neither the name of pywinauto nor the names of its
+# - Neither the name of pywinauto nor the names of its
 #   contributors may be used to endorse or promote products derived from
 #   this software without specific prior written permission.
 #
@@ -37,6 +37,8 @@ name = "pywinauto"
 version = "0.6.8"
 authors = [
     { name = "Mark Mc Mahon and Contributors", email = "pywinauto-users@lists.sourceforge.net" },
+]
+maintainers = [
     { name = "Joel Van Eenwyk", email = "joel.vaneenwyk@gmail.com" },
 ]
 description = "A set of Python modules to automate the Microsoft Windows GUI"
@@ -71,20 +73,6 @@ classifiers = [
     "Topic :: Software Development :: Testing",
     "Topic :: Software Development :: User Interfaces",
 ]
-
-# long_description = """
-# At it's simplest it allows you to send mouse and keyboard
-# actions to windows dialogs and controls, but It has support for more complex
-# controls also.
-#
-# Useful links
-# -------------
-# - Home page: https://pywinauto.github.io/
-# - Docs Intro: https://pywinauto.readthedocs.io/en/latest/
-# - Getting Started Guide: https://pywinauto.readthedocs.io/en/latest/getting_started.html
-# - StackOverflow tag: https://stackoverflow.com/questions/tagged/pywinauto
-# """
-
 dependencies = [
     'python-xlib; platform_system != "Windows"',
     "six",
@@ -130,20 +118,17 @@ test = [
     "pytest-cov>=3.0.0",
 ]
 
-packages = ["pywinauto"]
-# packages = [
-#     "pywinauto",
-#     "pywinauto.tests",
-#     "pywinauto.controls",
-#     "pywinauto.windows",
-# ]
-
 [project.urls]
 Homepage = "https://joelvaneenwyk.github.io/pywinauto"
 Source = "https://github.com/joelvaneenwyk/pywinauto"
 
+# Homepage = "https://pywinauto.github.io/"
+# Docs Intro = "https://pywinauto.readthedocs.io/en/latest/"
+# Getting Started Guide = "https://pywinauto.readthedocs.io/en/latest/getting_started.html"
+# StackOverflow tag = "https://stackoverflow.com/questions/tagged/pywinauto"
+
 [build-system]
-requires = ["setuptools>=61.2"]
+requires = ["setuptools>=61.2", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.pdm]
@@ -154,6 +139,8 @@ include-package-data = false
 py-modules = []
 
 [tool.uv]
+package = true
+managed = true
 link-mode = "copy"
 
 [tool.coverage.run]
