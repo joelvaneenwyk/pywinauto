@@ -50,10 +50,10 @@ import os.path
 from pywinauto import WindowAmbiguousError
 
 if len(sys.argv) < 2:
-    print("please specify a web address to download")
-    sys.exit()
-
-web_address = sys.argv[1]
+    print("no address specified, defaulting to google.com")
+    web_address = "https://www.google.com"
+else:
+    web_address = sys.argv[1]
 
 if len(sys.argv) > 2:
     outputfilename = sys.argv[2]
@@ -70,9 +70,25 @@ else:
 # hard to know where firefox might save the file!
 outputfilename = os.path.abspath(outputfilename)
 
-# start IE with a start URL of what was passed in
+# Check for Firefox in possible installation paths
+firefox_paths = [
+    r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe",
+    r"C:\Program Files\Mozilla Firefox\firefox.exe"
+]
+
+firefox_exe = None
+for path in firefox_paths:
+    if os.path.exists(path):
+        firefox_exe = path
+        break
+
+if not firefox_exe:
+    print("Firefox not found in standard locations. Please install Firefox or provide the correct path.")
+    sys.exit(1)
+
+# start Firefox with a start URL of what was passed in
 app = application.Application().start(
-    r"C:\Program Files (x86)\Mozilla Firefox\firefox.exe {}".format(web_address))
+    r"{} {}".format(firefox_exe, web_address))
 
 # some pages are slow to open - so wait some seconds
 time.sleep(5)
@@ -95,9 +111,8 @@ print("No Menu's in FireFox:", mozilla.menu_items())
 # File -> Save As
 mozilla.type_keys("%FA")
 #ie.Toolbar3.press_button("File")
-app.SaveAs.Edit.set_edit_text(outputfilename)
-
-app.SaveAs.Save.close_click()
+app.SaveAs.Edit1.set_edit_text(outputfilename)
+app.SaveAs.Button2.click()
 
 try:
     # if asked to overwrite say yes
@@ -113,4 +128,3 @@ print("saved:", outputfilename)
 # File close tab or close
 #(Firefox makes it easy for us having the same shortcut for both!
 mozilla.type_keys("%FC")
-
