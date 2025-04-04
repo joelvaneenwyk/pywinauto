@@ -148,3 +148,5 @@ target/
 
 # Unit tests screenshots
 __main__.*.jpg
+
+.ruff_cache/
