@@ -35,18 +35,20 @@ import time
 import comtypes
 import six
 
-from . import uiawrapper
-from . import win32_controls
-from . import common_controls
-from .. import findbestmatch
-from .. import timings
-from ..windows import uia_defines as uia_defs
-from ..windows.uia_defines import IUIA
-from ..windows.uia_defines import NoPatternInterfaceError
-from ..windows.uia_defines import toggle_state_on
-from ..windows.uia_defines import get_elem_interface
-from ..windows.uia_element_info import UIAElementInfo
-from ..windows.uia_element_info import elements_from_uia_array
+from pywinauto import findbestmatch
+from pywinauto import timings
+
+from pywinauto.controls import uiawrapper
+from pywinauto.controls import win32_controls
+from pywinauto.controls import common_controls
+
+from pywinauto.windows import uia_element_info
+from pywinauto.windows import uia_defines as uia_defs
+
+from pywinauto.windows.uia_defines import IUIA
+from pywinauto.windows.uia_defines import NoPatternInterfaceError
+from pywinauto.windows.uia_defines import toggle_state_on
+from pywinauto.windows.uia_defines import get_elem_interface
 
 
 # ====================================================================
@@ -756,7 +758,7 @@ class ListItemWrapper(uiawrapper.UIAWrapper):
         Only items supporting Toggle pattern should answer.
         Raise NoPatternInterfaceError if the pattern is not supported
         """
-        return self.iface_toggle.ToggleState_On == toggle_state_on
+        return self.iface_toggle.CurrentToggleState == toggle_state_on
 
     def texts(self):
         """Return a list of item texts"""
@@ -874,7 +876,7 @@ class ListViewWrapper(uiawrapper.UIAWrapper):
         """Get the information on the columns of the ListView"""
         if self.iface_grid_support:
             arr = self.iface_table.GetCurrentColumnHeaders()
-            cols = elements_from_uia_array(arr)
+            cols = uia_element_info.elements_from_uia_array(arr)
             return [uiawrapper.UIAWrapper(e) for e in cols]
         elif self.is_table:
             self.__raise_not_implemented()
@@ -908,7 +910,7 @@ class ListViewWrapper(uiawrapper.UIAWrapper):
         if self.iface_grid_support:
             try:
                 e = self.iface_grid.GetItem(row, column)
-                elem_info = UIAElementInfo(e)
+                elem_info = uia_element_info.UIAElementInfo(e)
                 cell_elem = uiawrapper.UIAWrapper(elem_info)
             except (comtypes.COMError, ValueError):
                 raise IndexError
@@ -937,10 +939,10 @@ class ListViewWrapper(uiawrapper.UIAWrapper):
                 # Try to load element using VirtualizedItem pattern
                 try:
                     get_elem_interface(com_elem, "VirtualizedItem").Realize()
-                    itm = uiawrapper.UIAWrapper(UIAElementInfo(com_elem))
+                    itm = uiawrapper.UIAWrapper(uia_element_info.UIAElementInfo(com_elem))
                 except NoPatternInterfaceError:
                     # Item doesn't support VirtualizedItem pattern - item is already on screen or com_elem is NULL
-                    itm = uiawrapper.UIAWrapper(UIAElementInfo(com_elem))
+                    itm = uiawrapper.UIAWrapper(uia_element_info.UIAElementInfo(com_elem))
             except (NoPatternInterfaceError, ValueError):
                 # com_elem is NULL pointer or item doesn't support ItemContainer pattern
                 # Get DataGrid row
@@ -964,7 +966,7 @@ class ListViewWrapper(uiawrapper.UIAWrapper):
                     get_elem_interface(com_elem, "VirtualizedItem").Realize()
                 except NoPatternInterfaceError:
                     pass
-                itm = uiawrapper.UIAWrapper(UIAElementInfo(com_elem))
+                itm = uiawrapper.UIAWrapper(uia_element_info.UIAElementInfo(com_elem))
             except (NoPatternInterfaceError, ValueError, AttributeError):
                 list_items = self.children(content_only=True)
                 itm = list_items[self.__resolve_row_index(row)]
@@ -1235,7 +1237,7 @@ class ToolbarWrapper(uiawrapper.UIAWrapper):
                 for btn_num in range(btn_count):
                     relative_point = self.win32_wrapper.get_button_rect(btn_num).mid_point()
                     button_coord_x, button_coord_y = self.client_to_screen(relative_point)
-                    btn_elem_info = UIAElementInfo.from_point(button_coord_x, button_coord_y)
+                    btn_elem_info = uia_element_info.UIAElementInfo.from_point(button_coord_x, button_coord_y)
                     button = uiawrapper.UIAWrapper(btn_elem_info)
                     if button.element_info.rectangle not in rectangles:
                         cc.append(button)
@@ -1243,7 +1245,7 @@ class ToolbarWrapper(uiawrapper.UIAWrapper):
             else:
                 # Qt5 toolbar doesn't reply on TB_BUTTONCOUNT window message
                 for btn in self.win32_wrapper.children():
-                    cc.append(uiawrapper.UIAWrapper(UIAElementInfo(btn.handle)))
+                    cc.append(uiawrapper.UIAWrapper(uia_element_info.UIAElementInfo(btn.handle)))
         else:
             cc = self.children()
         return cc
@@ -1438,7 +1440,7 @@ class TreeItemWrapper(uiawrapper.UIAWrapper):
         Only items supporting Toggle pattern should answer.
         Raise NoPatternInterfaceError if the pattern is not supported
         """
-        return (self.iface_toggle.ToggleState_On == toggle_state_on)
+        return (self.iface_toggle.CurrentToggleState == toggle_state_on)
 
     # -----------------------------------------------------------
     def ensure_visible(self):

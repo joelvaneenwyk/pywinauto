@@ -36,6 +36,7 @@ useful to other modules with the least conceptual overhead
 """
 
 import warnings
+
 from ctypes import wintypes
 from ctypes import WINFUNCTYPE
 from ctypes import c_int
@@ -48,9 +49,7 @@ import win32api
 import win32con
 import win32gui
 
-from .windows import win32functions
-from .windows import win32defines
-from .windows import win32structures
+from .windows import win32defines, win32functions, win32structures
 from .actionlogger import ActionLogger
 
 

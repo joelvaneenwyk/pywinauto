@@ -641,6 +641,10 @@ class AtspiAccessible(object):
     get_state_set.argtypes = [POINTER(_AtspiAccessible)]
     get_state_set.restype = POINTER(_AtspiStateSet)
 
+    get_document = IATSPI().get_iface_func("atspi_accessible_get_document")
+    get_document.argtypes = [POINTER(_AtspiAccessible)]
+    get_document.restype = POINTER(_AtspiDocument)
+
     is_action = IATSPI().get_iface_func("atspi_accessible_is_action")
     is_action.argtypes = [POINTER(_AtspiAccessible)]
     is_action.restype = c_bool
@@ -661,9 +665,6 @@ class AtspiAccessible(object):
     get_editable_text.argtypes = [POINTER(_AtspiAccessible)]
     get_editable_text.restype = POINTER(_AtspiEditableText)
 
-    get_document = IATSPI().get_iface_func("atspi_accessible_get_document")
-    get_document.argtypes = [POINTER(_AtspiAccessible)]
-    get_document.restype = POINTER(_AtspiDocument)
 
     get_image = IATSPI().get_iface_func("atspi_accessible_get_image")
     get_image.argtypes = [POINTER(_AtspiAccessible)]

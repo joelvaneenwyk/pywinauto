@@ -28,6 +28,41 @@
 # CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+"""Application class interface for all operating systems
+
+When starting to automate an application you must initialize an instance
+of the Application class. Then you must :func:`Application.start` that
+application or :func:`Application.connect()` to a running instance of that
+application.
+
+Once you have an Application instance you can access dialogs in that
+application either by using one of the methods below. ::
+
+   dlg = app.YourDialogTitle
+   dlg = app.child_window(title="your title", classname="your class", ...)
+   dlg = app['Your Dialog Title']
+
+Similarly once you have a dialog you can get a control from that dialog
+in almost exactly the same ways. ::
+
+  ctrl = dlg.YourControlTitle
+  ctrl = dlg.child_window(title="Your control", classname="Button", ...)
+  ctrl = dlg["Your control"]
+
+.. note::
+
+   For attribute access of controls and dialogs you do not have to
+   have the title of the control exactly, it does a best match of the
+   available dialogs or controls.
+
+.. seealso::
+
+   :func:`pywinauto.findwindows.find_elements` for the keyword arguments that
+   can be passed to both: :func:`Application.window` and
+   :func:`WindowSpecification.child_window`
+"""
+
 import sys
 
 from .base_application import WindowSpecification  # noqa: W0611

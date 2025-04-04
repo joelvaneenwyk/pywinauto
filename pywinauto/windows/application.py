@@ -49,7 +49,7 @@ from .. import controls
 from .. import findbestmatch
 from .. import findwindows
 from .. import handleprops
-from . import win32defines
+from pywinauto.windows import win32defines
 from ..backend import registry
 
 from ..actionlogger import ActionLogger
@@ -558,7 +558,7 @@ class Application(BaseApplication):
         would do in task manager.
         """
         if soft:
-            windows = self.windows(visible=True)
+            windows = self.windows(visible_only=True)
 
             for win in windows:
                 try:

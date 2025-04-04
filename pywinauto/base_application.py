@@ -497,7 +497,8 @@ class WindowSpecification(object):
         """
         # if we already have 2 levels of criteria (dlg, control)
         # then resolve the control and do a getitem on it for the
-        if len(self.criteria) >= 2:  # FIXME - this is surprising
+        # attribute and return it
+        if len(self.criteria) >= 2:
 
             ctrl = self.find()
 
@@ -562,7 +563,7 @@ class WindowSpecification(object):
         # if we already have 2 levels of criteria (dlg, control)
         # this third must be an attribute so resolve and get the
         # attribute and return it
-        if len(self.criteria) >= 2:  # FIXME - this is surprising
+        if len(self.criteria) >= 2:
 
             ctrl = self.find()
 
@@ -932,7 +933,6 @@ class BaseApplication(object):
             criteria['handle'] = windows[0].handle
         else:
             criteria['name'] = windows[0].name
-
 
         return WindowSpecification(criteria, allow_magic_lookup=self.allow_magic_lookup)
 

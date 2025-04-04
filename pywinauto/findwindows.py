@@ -152,7 +152,8 @@ def find_elements(**kwargs):
     # tell user about new property name for every renamed one
     if hasattr(backend_obj.element_info_class, 'renamed_props'):
         #renamed_erros = []
-        for key, value in kwargs.items():
+        items = list(kwargs.items())
+        for key, value in items:
             renamed_prop = backend_obj.element_info_class.renamed_props.get(key, None)
             if renamed_prop is not None:
                 new_key, values_map = renamed_prop
@@ -193,6 +194,7 @@ def find_elements(**kwargs):
         element = backend_obj.element_info_class()
         # TODO: think about not passing **kwargs
         elements = element.children(class_name=kwargs.get('class_name'),
+                                    name=kwargs.get('name'),
                                     control_type=kwargs.get('control_type'),
                                     process=kwargs.get('pid'),
                                     cache_enable=False)
@@ -210,6 +212,7 @@ def find_elements(**kwargs):
         # look for ALL children of that parent
         # TODO: think about not passing **kwargs
         elements = parent.descendants(class_name=kwargs.get('class_name'),
+                                      name=kwargs.get('name'),
                                       control_type=kwargs.get('control_type'),
                                       process=kwargs.get('pid'),
                                       cache_enable=False,
@@ -280,6 +283,7 @@ def find_elements(**kwargs):
     if predicate_func is not None:
         elements = [elem for elem in elements if predicate_func(elem)]
 
+    # TODO: add check for IndexError
     if found_index is not None:
         if found_index >= len(elements):
             return []

@@ -128,7 +128,7 @@ def _build_pattern_ids_dic():
     """
     base_names = [
         'Dock', 'ExpandCollapse', 'GridItem', 'Grid', 'Invoke', 'ItemContainer',
-        'LegacyIAccessible', 'MulipleView', 'RangeValue', 'ScrollItem', 'Scroll',
+        'LegacyIAccessible', 'MultipleView', 'RangeValue', 'ScrollItem', 'Scroll',
         'SelectionItem', 'Selection', 'SynchronizedInput', 'TableItem', 'Table',
         'Text', 'Toggle', 'VirtualizedItem', 'Value', 'Window',
         'Transform',
@@ -148,25 +148,35 @@ def _build_pattern_ids_dic():
 
     # Loop over the all base names and try to retrieve control patterns
     for ptrn_name in base_names:
-
-        # Construct a class name and check if it is supported by comtypes
-        v2 = ""
-        name = ptrn_name
-        if ptrn_name.endswith("V2"):
-            name = ptrn_name[:-2]
-            v2 = "2"
-        cls_name = ''.join(['IUIAutomation', name, 'Pattern', v2])
+        ptrn_id_name, cls_name = _get_ptrn_names(ptrn_name)
         if hasattr(IUIA().ui_automation_client, cls_name):
             klass = getattr(IUIA().ui_automation_client, cls_name)
-
-            # Contruct a pattern ID name and get the ID value
-            ptrn_id_name = 'UIA_' + name + 'Pattern' + v2 + 'Id'
             ptrn_id = getattr(IUIA().UIA_dll, ptrn_id_name)
-
             # Update the registry of known patterns
             ptrn_ids_dic[ptrn_name] = (ptrn_id, klass)
 
     return ptrn_ids_dic
+
+
+def _get_ptrn_names(base):
+    # type: (str) -> tuple[str, str]
+    """Return the id name and class name corresponding to each pattern's base name.
+
+    Examples:
+        >>> _get_ptrn_names('Grid')
+        ('UIA_GridPatternId', 'IUIAutomationGridPattern')
+        >>> _get_ptrn_names('GridItem')
+        ('UIA_GridItemPatternId', 'IUIAutomationGridItemPattern')
+        >>> _get_ptrn_names('Text')
+        ('UIA_TextPatternId', 'IUIAutomationTextPattern')
+        >>> _get_ptrn_names('TextV2')
+        ('UIA_TextPattern2Id', 'IUIAutomationTextPattern2')
+    """
+    stem, v2 = (base[:-2], "2") if base.endswith("V2") else (base, "")
+    cls_name = f"IUIAutomation{stem}Pattern{v2}"
+    id_name = f"UIA_{stem}Pattern{v2}Id"
+    return id_name, cls_name
+
 
 pattern_ids = _build_pattern_ids_dic()
 
@@ -217,11 +227,11 @@ def get_elem_interface(element_info, pattern_name):
     TODO: handle a wrong pattern name
     """
     # Resolve the pattern id and the class to query
-    ptrn_id, cls_name = pattern_ids[pattern_name]
+    ptrn_id, ptrn_cls = pattern_ids[pattern_name]
     # Get the interface
     try:
         cur_ptrn = element_info.GetCurrentPattern(ptrn_id)
-        iface = cur_ptrn.QueryInterface(cls_name)
-    except(ValueError):
+        iface = cur_ptrn.QueryInterface(ptrn_cls)
+    except (ValueError, comtypes.COMError):
         raise NoPatternInterfaceError()
     return iface

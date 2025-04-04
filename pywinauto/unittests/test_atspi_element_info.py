@@ -145,7 +145,7 @@ if sys.platform.startswith("linux"):
             self.desktop_info = AtspiElementInfo()
             self.app = Application()
             self.app.start(_test_app())
-            time.sleep(1)
+            time.sleep(3)
             self.app_info = self.get_app(app_name)
             self.app2 = None
 
@@ -195,7 +195,7 @@ if sys.platform.startswith("linux"):
             self.assertEqual(self.app_info.description(), "")
 
         def test_can_get_framework_id(self):
-            dpkg_output = subprocess.check_output(["dpkg", "-s", "libgtk-3-0"]).decode(encoding='UTF-8')
+            dpkg_output = subprocess.check_output(["dpkg", "-s", "libgtk-3-dev"]).decode(encoding='UTF-8')
             version_line = None
             for line in dpkg_output.split("\n"):
                 if line.startswith("Version"):

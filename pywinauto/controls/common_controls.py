@@ -53,9 +53,7 @@ import warnings
 import locale
 import six
 
-from ..windows import win32functions
-from ..windows import win32defines
-from ..windows import win32structures
+from pywinauto.windows import win32defines, win32functions, win32structures
 from .. import findbestmatch
 from ..windows.remote_memory_block import RemoteMemoryBlock
 from . import hwndwrapper
